@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %> 
+<h1 style="margin: 20px 0">Edit Comment </h1>
+<div class="container" style="width: 30%; margin-left: 35%;">
+    <form action="/animals/<%= animalid %>/comments/<%= comn._id %>?_method=PUT" method="POST">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" value="<%= comn.content %> " name="comm[content]">
+        <button class="btn btn-outline-primary btn-sm">SUBMIT</button>
+    </form>
+    <a href="/animals">Back</a>
+</div>
+
+<%- include('../partials/footer.ejs') %> 

@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %> 
+<h1 style="margin: 20px 0">Lodge a Complaint</h1>
+<div class="container" style="width: 30%; margin-left: 35%;">
+    <form action="/animals" method="POST">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" placeholder="name" name="name">
+        <input class="form-control"  style="margin-bottom: 6px;" type="text" placeholder="image" name="image">
+        <input class="form-control"  style="margin-bottom: 6px;" type="text" placeholder="Description" name="desc">
+        <button class="btn btn-outline-primary btn-sm">SUBMIT</button>
+    </form>
+    <a href="/animals">Back</a>
+</div>
+
+<%- include('../partials/footer.ejs') %> 

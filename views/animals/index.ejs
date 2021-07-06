@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Public Works Department Service Portal</h1>
+        <a class="btn btn-outline-primary btn-lg" href="/animals/new">Lodge a Complaint</a>
+    </div>
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+        <% data.forEach(function(animals){ %>
+        <div class="col-md-4 col-sm-6" >
+                <img src="<%=animals.image%>" style="width: 360px; height: 360px;">
+                <div class="caption">
+                    <%= animals.name %>
+            </div>
+        <a href='/animals/<%= animals._id %> ' class="btn btn-primary " style="margin-bottom: 10px;">Show More</a>
+        </div>
+        <%  }); %>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</div>

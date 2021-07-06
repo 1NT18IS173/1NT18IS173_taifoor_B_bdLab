@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %> 
+<h1 style="margin: 20px 0">Add Comment to <%= comn.name %> </h1>
+<div class="container" style="width: 30%; margin-left: 35%;">
+    <form action="/animals/<%= comn._id %>/comments" method="POST">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" placeholder="comment" name="comm[content]">
+        <button class="btn btn-outline-primary btn-sm">SUBMIT</button>
+    </form>
+    <a href="/animals">Back</a>
+</div>
+
+<%- include('../partials/footer.ejs') %> 

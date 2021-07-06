@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Complaints</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/animals.css">
+</head>
+
+<body>
+
+
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+        <a class="navbar-brand" href="/animals">PWD</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class=" nav navbar-nav navbar-right">
+            <% if(!currentUser){ %>
+            <li class="nav-item navbar-right">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item navbar-right">
+              <a class="nav-link" href="/signup">SignUp</a>
+            </li>
+          <% }  else { %> 
+            <li class="nav-item navbar-right">
+              <a class="nav-link" href="#"><%= currentUser.username %> </a>
+            </li>
+            <li class="nav-item navbar-right">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          <% } %> 
+          </ul>
+        </div>
+    </div>
+      </nav>

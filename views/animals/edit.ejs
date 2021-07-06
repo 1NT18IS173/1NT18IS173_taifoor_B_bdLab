@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %> 
+<h1 style="margin: 20px 0">Edit Complaints</h1>
+<div class="container" style="width: 30%; margin-left: 35%;">
+    <form action="/animals/<%=edit._id %>?_method=PUT " method="POST">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" value="<%= edit.name %> " name="val[name]">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" value="<%= edit.image %> " name="val[image]">
+        <input class="form-control" style="margin-bottom: 6px;" type="text" value="<%= edit.description %> " name="val[desc]">
+        <button class="btn btn-outline-primary btn-sm">SUBMIT</button>
+    </form>
+    <a href="/animals">Back</a>
+</div>
+
+<%- include('../partials/footer.ejs') %> 

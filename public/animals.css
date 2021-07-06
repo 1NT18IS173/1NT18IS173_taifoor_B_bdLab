@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+    color: black;
+}
+.card{
+    margin-top: 10px;
+}
+#edit{
+    float: left;
+    margin-bottom: 5px;
+}
+#delete{
+    margin-left: 5px;
+    float: left;
+    margin-bottom: 5px;
+
+    display: inline;
+}
+.a{
+    margin-bottom: 0;
+    margin-left: 0;
+}
