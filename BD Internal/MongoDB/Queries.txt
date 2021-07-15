@@ -1,0 +1,88 @@
+1.Demonstrate the usage of $match, $group, aggregate pipelines.
+   
+
+> use bdla;
+switched to db bdla
+> db.student.aggregate([ { $match:{Pass:"TRUE"} }, { $group:{_id: "$Name"} } ] );
+{ "_id" : "Rohit" }
+{ "_id" : "Saurabh" }
+{ "_id" : "Joey" }
+{ "_id" : "Michael" }
+{ "_id" : "Ross" }
+{ "_id" : "Ram" }
+{ "_id" : "Joe" }
+{ "_id" : "Cook" }
+{ "_id" : "Rohan" }
+{ "_id" : "Jen" }
+{ "_id" : "Shyam" }
+{ "_id" : "Ahmad" }
+
+
+2.Demonstrate the Map-Reduce aggregate function on this dataset.  
+
+> var mapper=function(){emit(this.Name,this.Subject1)};
+> var reducer=function(Name,Subject){ return Array.avg(Subject1)};
+> db.student.mapReduce(mapper,reducer,{out : "result"});
+{
+        "result" : "result",
+        "timeMillis" : 58,
+        "counts" : {
+                "input" : 21,
+                "emit" : 21,
+                "reduce" : 0,
+                "output" : 21
+        },
+        "ok" : 1
+}
+> db.result.find();
+{ "_id" : "", "value" : null }
+{ "_id" : "Ahmad", "value" : "22" }
+{ "_id" : "Akash", "value" : "20" }
+{ "_id" : "Conor", "value" : "57" }
+{ "_id" : "Cook", "value" : "66" }
+{ "_id" : "Henry", "value" : "67" }
+{ "_id" : "Jen", "value" : "99" }
+{ "_id" : "Joe", "value" : "42" }
+{ "_id" : "Joey", "value" : "100" }
+{ "_id" : "Michael", "value" : "22" }
+{ "_id" : "Mohit", "value" : "20" }
+{ "_id" : "Pam", "value" : "23" }
+{ "_id" : "Ram", "value" : "20" }
+{ "_id" : "Ramos", "value" : "12" }
+{ "_id" : "Rohan", "value" : "45" }
+{ "_id" : "Rohit", "value" : "47" }
+{ "_id" : "Ross", "value" : "50" }
+{ "_id" : "Sachin", "value" : "23" }
+{ "_id" : "Saurabh", "value" : 99 }
+{ "_id" : "Shyam", "value" : "63" }
+Type "it" for more
+
+
+3.Count the number of students who had passed in at least 2 subjects.
+
+> use bdla;
+switched to db bdla
+> db.student.aggregate([{$match:{$and:[{Subject1: {$gt:20}},{Subject2:{$gt:20}}]}},{$count:"pass"}]);
+{ "pass" : 1 }
+
+
+4.Demonstrate the Alter and Drop commands on this dataset. 
+
+
+> use bdla;
+switched to db bdla
+> db.student.aggregate([{$match:{$and:[{Subject1: {$gt:20}},{Subject2:{$gt:20}}]}},{$count:"pass"}]);
+{ "pass" : 1 }
+> db.student.find({Usn:"203"});
+{ "_id" : ObjectId("60f060c442f16f2f4c4830cb"), "Name" : "Joe", "Usn" : "203", "Subject1" : "42", "Subject2" : "90", "Subject3" : "86", "Pass" : "TRUE" }
+> db.student.update({Usn: "203"},{$set:{Subject1:56,Subject2:100}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.student.find({Usn:"203"});
+{ "_id" : ObjectId("60f060c442f16f2f4c4830cb"), "Name" : "Joe", "Usn" : "203", "Subject1" : 56, "Subject2" : 100, "Subject3" : "86", "Pass" : "TRUE" }
+> show collections;
+result
+student
+> db.result.drop();
+true
+> show collections;
+student
